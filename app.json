@@ -1,0 +1,46 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/reading/reading",    
+    "pages/movie/movie",
+    "pages/logs/logs",
+    "pages/contact/contact"
+  ],
+  "tabBar": {
+    "color": "#ddd",
+    "selectedColor": "#3cc51f",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/reading/reading",
+        "iconPath": "img/tab/yuedu.png",
+        "selectedIconPath": "img/tab/yuedu_hl.png",
+        "text": "阅读"
+      },
+      {
+        "pagePath": "pages/movie/movie",
+        "iconPath": "img/tab/dianying.png",
+        "selectedIconPath": "img/tab/dianying_hl.png",
+        "text": "电影"
+      },
+      {
+        "pagePath": "pages/contact/contact",
+        "iconPath": "img/contact.png",
+        "selectedIconPath": "img/contact_se.png",
+        "text": "联系我们"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "iconPath": "img/history.png",
+        "selectedIconPath": "img/history_se.png",
+        "text": "日志"
+      }
+    ]
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#b3d4db",
+    "navigationBarTitleText": "1970s",
+    "navigationBarTextStyle":"black"
+  }
+}

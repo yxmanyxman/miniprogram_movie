@@ -1,0 +1,30 @@
+<!--pages/reading/reading.wxml-->
+<view>
+<!-- 滚动 -->
+  <swiper
+    autoplay="{{autoplay}}"
+    indicator-dots='{{dots}}'
+    >
+    <block wx:for="{{imgRoll}}" wx:key="index">
+      <swiper-item>
+        <image src='{{item}}'></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 文章列表  -->
+  <view class='post-container' wx:for="{{postData}}" wx:key="index">
+    <view class='post-author-data'>
+      <image class='post-author-avatar' src='{{item.author_avatar}}'></image>
+      <text class='post-date'>{{item.post_date}}</text>
+    </view>
+    <text class='post-title'>{{item.post_title}}</text>
+    <image class='post-image' src='{{item.post_image}}'></image>
+    <text class='post-content'>{{item.post_content}}</text>
+    <view class='post-comment'>
+      <image class='post-comment-icon' src='{{item.comment_icon}}'></image>
+      <text class='post-comment-num'>{{item.comment}}</text>
+      <image class='post-comment-icon' src='{{item.looked_icon}}'></image>
+      <text class='post-comment-num'>{{item.looked}}</text>
+    </view>
+  </view>
+</view>
