@@ -18,6 +18,7 @@ button {
 
 .userinfo-nickname {
   color: #fff;
+  font-size: 36rpx;
 }
 
 .usermotto {

@@ -1,4 +1,5 @@
 <!--pages/reading/reading.wxml-->
+<import src="reading-template/reading-template.wxml"/>
 <view>
 <!-- 滚动 -->
   <swiper
@@ -12,19 +13,10 @@
     </block>
   </swiper>
   <!-- 文章列表  -->
-  <view class='post-container' wx:for="{{postData}}" wx:key="index">
-    <view class='post-author-data'>
-      <image class='post-author-avatar' src='{{item.author_avatar}}'></image>
-      <text class='post-date'>{{item.post_date}}</text>
+  <block wx:for="{{postData}}" wx:key="index">
+    <!-- 此处{{...item}}相当于已遍历展开每一项 -->
+    <view bindtap="gotoReadingDetail" data-postid="{{item.postId}}">
+      <template is="readingItem" data="{{...item}}"/>
     </view>
-    <text class='post-title'>{{item.post_title}}</text>
-    <image class='post-image' src='{{item.post_image}}'></image>
-    <text class='post-content'>{{item.post_content}}</text>
-    <view class='post-comment'>
-      <image class='post-comment-icon' src='{{item.comment_icon}}'></image>
-      <text class='post-comment-num'>{{item.comment}}</text>
-      <image class='post-comment-icon' src='{{item.looked_icon}}'></image>
-      <text class='post-comment-num'>{{item.looked}}</text>
-    </view>
-  </view>
+  </block>
 </view>

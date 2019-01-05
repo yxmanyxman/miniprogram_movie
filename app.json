@@ -4,7 +4,8 @@
     "pages/reading/reading",    
     "pages/movie/movie",
     "pages/logs/logs",
-    "pages/contact/contact"
+    "pages/contact/contact",
+    "pages/reading/reading-detail/reading-detail"
   ],
   "tabBar": {
     "color": "#ddd",
@@ -27,7 +28,7 @@
         "pagePath": "pages/contact/contact",
         "iconPath": "img/contact.png",
         "selectedIconPath": "img/contact_se.png",
-        "text": "联系我们"
+        "text": "联系我"
       },
       {
         "pagePath": "pages/logs/logs",
@@ -39,8 +40,9 @@
   },
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#b3d4db",
-    "navigationBarTitleText": "1970s",
-    "navigationBarTextStyle":"black"
+    "navigationBarBackgroundColor": "#405f80",
+    "navigationBarTitleText": "文章电影推荐",
+    "navigationBarTextStyle":"#fff"
+    
   }
 }

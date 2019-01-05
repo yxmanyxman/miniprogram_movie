@@ -1,0 +1,18 @@
+<!-- 模板化，并不是模块化，只需wxml、wxss文件，小程序不会加载js脚本文件 -->
+<template name="readingItem">
+  <view class='post-container'>
+      <view class='post-author-data'>
+        <image class='post-author-avatar' src='{{author_avatar}}'></image>
+        <text class='post-date'>{{post_date}}</text>
+      </view>
+      <text class='post-title'>{{post_title}}</text>
+      <image class='post-image' src='{{post_image}}'></image>
+      <text class='post-content'>{{post_content}}</text>
+      <view class='post-comment'>
+        <image class='post-comment-icon' src='{{comment_icon}}'></image>
+        <text class='post-comment-num'>{{comment}}</text>
+        <image class='post-comment-icon' src='{{looked_icon}}'></image>
+        <text class='post-comment-num'>{{looked}}</text>
+      </view>
+    </view>
+</template>

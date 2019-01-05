@@ -1,0 +1,20 @@
+<!--pages/reading/reading-detail/reading-detail.wxml-->
+<view class='detail-container'>
+  <image src='/img/post/1.png' class='detail-img'></image>
+  <image src='/img/music/music-start.png' class='music'></image>
+  <view class='detail-author'>
+    <image src='/img/avatar/1.png' class='avatar'></image>
+    <text class='author'>知乎</text>
+    <text class='publish-by'>发表于</text>
+    <text class='publish-time'>3 days ago</text>
+  </view>
+  <text class='title'>文章标题</text>
+  <view class='tool'>
+    <view class='tool-icon'>
+      <image src='/img/icon/collection.png'></image>
+      <image src='/img/icon/share.png' class='share-icon'></image>
+    </view>
+    <view class='line'></view>
+  </view>
+  <text class='content'>内容bala</text>
+</view>
