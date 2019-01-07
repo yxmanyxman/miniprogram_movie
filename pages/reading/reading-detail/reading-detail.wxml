@@ -1,20 +1,22 @@
 <!--pages/reading/reading-detail/reading-detail.wxml-->
 <view class='detail-container'>
-  <image src='/img/post/1.png' class='detail-img'></image>
+  <image src='{{data_.detail.bannerImg}}' class='detail-img'></image>
   <image src='/img/music/music-start.png' class='music'></image>
   <view class='detail-author'>
-    <image src='/img/avatar/1.png' class='avatar'></image>
-    <text class='author'>知乎</text>
+    <image src='{{data_.author_avatar}}' class='avatar'></image>
+    <text class='author'>{{data_.author}}</text>
     <text class='publish-by'>发表于</text>
-    <text class='publish-time'>3 days ago</text>
+    <text class='publish-time'>{{data_.dateTime}}</text>
   </view>
-  <text class='title'>文章标题</text>
+  <text class='title'>{{data_.post_title}}</text>
   <view class='tool'>
     <view class='tool-icon'>
-      <image src='/img/icon/collection.png'></image>
-      <image src='/img/icon/share.png' class='share-icon'></image>
+      <image wx:if="{{collect_status}}" src='/img/icon/collection.png' bindtap='collectFunc'></image>
+      <image wx:else src='/img/icon/collection-anti.png' bindtap='collectFunc'></image>
+      <image wx:if="{{share_status}}" src='/img/icon/share.png' class='share-icon' bindtap='shareFunc'></image>
+      <image wx:else src='/img/icon/share.png' class='share-icon' bindtap='shareFunc'></image>
     </view>
     <view class='line'></view>
   </view>
-  <text class='content'>内容bala</text>
+  <text class='content'>{{data_.detail.content}}</text>
 </view>

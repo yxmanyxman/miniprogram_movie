@@ -65,7 +65,7 @@
 }
 .content {
   color: #666;
-  margin: 20rpx 30rpx 0 30rpx;
+  margin: 20rpx 30rpx;
   line-height: 44rpx;
   letter-spacing: 2px;
 }

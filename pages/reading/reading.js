@@ -36,7 +36,7 @@ Component({
       let postId = e.currentTarget.dataset.postid;
       console.log(postId);
       wx.navigateTo({
-        url: 'reading-detail/reading-detail',
+        url: 'reading-detail/reading-detail?id='+postId,
       })
     }
   }
