@@ -1,7 +1,7 @@
 <!--pages/reading/reading-detail/reading-detail.wxml-->
 <view class='detail-container'>
   <image src='{{data_.detail.bannerImg}}' class='detail-img'></image>
-  <image src='/img/music/music-start.png' class='music'></image>
+  <image src='{{isPlayingMusic?"/img/music/music-stop.png":"/img/music/music-start.png"}}' class='music' catchtap='musicFunc'></image>
   <view class='detail-author'>
     <image src='{{data_.author_avatar}}' class='avatar'></image>
     <text class='author'>{{data_.author}}</text>
