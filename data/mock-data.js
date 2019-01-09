@@ -70,7 +70,88 @@ let reading_data = [
         coverImg: 'https://y.gtimg.cn/music/photo_new/T002R300x300M000003rRgZY4NWnKn.jpg?max_age=2592000'
       }
     }
-  }
+  },
+  {
+    postId: 3,
+    author_avatar: '/img/avatar/3.png',
+    post_date: 'Jan 9 2018',
+    post_title: '张小龙：微信之父',
+    post_image: '/img/post/6.jpg',
+    post_content: '12月12日，腾讯召开一年一度的员工大会。在CEO马化腾、总裁刘炽平、COO任宇昕之后，微信事业群总裁张小龙也照例进行了一次主题为“套路”的演讲。',
+    comment: 33,
+    comment_icon: '/img/icon/chat.png',
+    looked: 133,
+    looked_icon: '/img/icon/view.png',
+    detail: {
+      bannerImg: '/img/post/6.jpg',
+      author: '36氪',
+      dateTime: '22小时前',
+      content: "今年一月初，张小龙曾在微信公开课上演讲称不懂信息流是什么；但年中微信公众号大改版后，尽管他自己否认，但行业普遍认为公众号还是成了图文信息流。现在，张小龙没再说不懂信息流了，而是认为“人工智能”就是一种“机器套路互联网”。张小龙称，“互联网的发展史，就是套路发展史，用套路去欺骗用户、误导用户”。以前是人工套路互联网，而现在是机器套路互联网，而人们美其名曰“人工智能时代”。而他在反思，这种由今日头条引领风潮、腾讯也有许多人在跟随的机器学习、人工智能产品方法论是否是好的，判断标准究竟基于什么。张小龙评论某短视频的Slogan和价值观“记录美好生活”，但生活本身其实是不美好的，大部分产品只不过是在做各种滤镜去欺骗用户。（当然，他并没有提到有相当数量的用户确实希望通过互联网产品的套路来欺骗自己、粉饰真实……）",
+      music: {
+        url: 'http://183.60.23.18/amobile.music.tc.qq.com/C400004IqzeH2QndYH.m4a?guid=766147484&vkey=8C76B20AECA0343A59821F39C8502964B3E60273DCB2B06A2459D741563C99E67CD6BABF9D3BFE097C5B5C0265AEEA10A3C2A2C6DE2603B8&uin=0&fromtag=66',
+        title: '够钟',
+        singer: '周柏豪',
+        coverImg: 'https://y.gtimg.cn/music/photo_new/T002R300x300M000003rRgZY4NWnKn.jpg?max_age=2592000'
+      }
+    }
+  },
+  {
+    postId: 4,
+    author_avatar: '/img/avatar/3.png',
+    post_date: 'Jan 19 2018',
+    post_title: 'VR技术在工业领域的四大优点',
+    post_image: '/img/vr.png',
+    post_content: '利用图片和文字展示信息已经完全不能满足用户的需求。',
+    comment: 44,
+    comment_icon: '/img/icon/chat.png',
+    looked: 144,
+    looked_icon: '/img/icon/view.png',
+    detail: {
+      bannerImg: '/img/vr.png',
+      author: '36氪',
+      dateTime: '20小时前',
+      content: "利用图片和文字展示信息已经完全不能满足用户的需求。现在，很多大型的机械设备厂家和精密产品制造商已经应用了VR技术，把机械的外形、材质、零部件和内部构造以及机械的设计原理、工作过程、性能特征、使用方式等等，通过三维的方式展现出来。随着虚拟现实技术的普及，已经广泛的应用在了各大工程机械公司，用以包装企业实力和形象，当然还可以为用户提供方便。"+
+      "1、增加客户购买欲望"+
+　　"利用虚拟现实技术，可以让客户360度的观看机械内部构造和使用方法等等，同时还能把设备的检修保养、故障判断维护教程一并交给客户，这样不仅可以保证设备正常运行，还能更便捷的维修设备，大大的增加了客户的购买欲望。"+
+      "2、便于携带，有效宣传"+
+　　"对机械设备企业而言，最烦的莫过于携带大型工具去参加展示，不仅浪费人力物力，没准还能对设备造成损坏。那么应用VR技术之后，就可以以影片、视频、动画等方式展示给客户，大大的缩短了时间和空间。"+
+      "3、有利于命中项目招投标"+
+　　"VR的出现，已经打破了无法拍摄产品内部结构、单靠文字和CAD图纸说明的瓶颈，可以更加生动具体的为客户解释产品特性和优势，让客户在短时间内 了解产品及其优势，从而增加中标的几率。"+
+      "4、降低风险，提高成交率"+
+　　"如果你以为虚拟仿真技术只有上面的3个优点，那你就错了。最重要是利用虚拟现实技术可以将机械形状和功能等逼真地展示出来，还能将一些危险系数较大的工程以三维动画的形式展示出来，降低新品开发风险，提高成交率。"
+      ,
+      music: {
+        url: 'http://183.60.23.18/amobile.music.tc.qq.com/C400004IqzeH2QndYH.m4a?guid=766147484&vkey=8C76B20AECA0343A59821F39C8502964B3E60273DCB2B06A2459D741563C99E67CD6BABF9D3BFE097C5B5C0265AEEA10A3C2A2C6DE2603B8&uin=0&fromtag=66',
+        title: '够钟',
+        singer: '周柏豪',
+        coverImg: 'https://y.gtimg.cn/music/photo_new/T002R300x300M000003rRgZY4NWnKn.jpg?max_age=2592000'
+      }
+    }
+  },
+  {
+    postId: 5,
+    author_avatar: '/img/avatar/3.png',
+    post_date: 'Jan 19 2018',
+    post_title: '罗辑思维放弃小程序',
+    post_image: '/img/wx.png',
+    post_content: '1月13日起，用户发现罗辑思维主推的一款知识服务产品“得到plus”暂停了小程序，用户超1000万的罗辑思维撤退了。',
+    comment: 55,
+    comment_icon: '/img/icon/chat.png',
+    looked: 155,
+    looked_icon: '/img/icon/view.png',
+    detail: {
+      bannerImg: '/img/wx.png',
+      author: '小白',
+      dateTime: '2小时前',
+      content: "罗辑思维联合创始人“快刀青衣”（网名）向记者证实了图片的真实性，并表示，本来得到是准备做个轻量级的'叫床'服务，做的过程中发现有技术难题实在无法攻克，加上创业团队开发资源有限，所以短期内不会再投入精力做小程序了。“小程序不适合我们，那是线下利器。小程序是一个对于低频工具类的应用是一个大杀器，并且对线下商业环境有极其强的好处。但是对线上应用，缺少数据积累，缺少用户体系，使用链条太长，并不太适合。”快刀青衣表示。一位知乎网友表示，得到的用户大概是这样的：卸载得到，添加得到小程序，入口深，没有推送，得到和用户失去联系，用户满足于得到小程序内容，不去发现整个得到的内容，活跃度下降，得到收益下降。由于目前得到没什么竞争对手，得到用户大多来自罗辑思维，小程序不仅没有得到新用户，还丢失了老用户。所以干脆切断小程序。最适合做小程序的是交易服务，而不是内容服务。",
+      music: {
+        url: 'http://183.60.23.18/amobile.music.tc.qq.com/C400004IqzeH2QndYH.m4a?guid=766147484&vkey=8C76B20AECA0343A59821F39C8502964B3E60273DCB2B06A2459D741563C99E67CD6BABF9D3BFE097C5B5C0265AEEA10A3C2A2C6DE2603B8&uin=0&fromtag=66',
+        title: '够钟',
+        singer: '周柏豪',
+        coverImg: 'https://y.gtimg.cn/music/photo_new/T002R300x300M000003rRgZY4NWnKn.jpg?max_age=2592000'
+      }
+    }
+  },
 ];
 
 module.exports = {

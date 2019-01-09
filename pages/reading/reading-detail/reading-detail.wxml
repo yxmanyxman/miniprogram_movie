@@ -4,9 +4,9 @@
   <image src='{{isPlayingMusic?"/img/music/music-stop.png":"/img/music/music-start.png"}}' class='music' catchtap='musicFunc'></image>
   <view class='detail-author'>
     <image src='{{data_.author_avatar}}' class='avatar'></image>
-    <text class='author'>{{data_.author}}</text>
+    <text class='author'>{{data_.detail.author}}</text>
     <text class='publish-by'>发表于</text>
-    <text class='publish-time'>{{data_.dateTime}}</text>
+    <text class='publish-time'>{{data_.detail.dateTime}}</text>
   </view>
   <text class='title'>{{data_.post_title}}</text>
   <view class='tool'>

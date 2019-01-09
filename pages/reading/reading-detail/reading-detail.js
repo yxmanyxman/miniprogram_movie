@@ -152,18 +152,23 @@ Page({
     if (collects) {
       // 2.如果非空，拿当前详情页的收藏状态
       var collect = collects[postId];
+      if (collect == undefined) {
+        collects[postId] = false;
+        wx.setStorageSync('collect', collects);
+      }
       this.setData({
         collect_status: collect
       });
+
     } else {
       // 否则，初始化设置缓存
-      var collect = [];
-      collect[postId] = false;
-      wx.setStorageSync('collect', collect);
+      var nocollect = [];
+      nocollect[postId] = false;
+      wx.setStorageSync('collect', nocollect);
     }
     // 背景音乐监听
     if (app.globalData.globalIsPlayingMusic && app.globalData.globalCurrentMusicPostId === postId) {
-      console.log('监听音乐当前',);
+      console.log('监听音乐当前', );
       this.setData({
         isPlayingMusic: true
       });
