@@ -9,7 +9,7 @@
   ],
   "tabBar": {
     "color": "#ddd",
-    "selectedColor": "#3cc51f",
+    "selectedColor": "#405f80",
     "backgroundColor": "#fff",
     "list": [
       {
@@ -43,6 +43,5 @@
     "navigationBarBackgroundColor": "#405f80",
     "navigationBarTitleText": "文章电影推荐",
     "navigationBarTextStyle":"#fff"
-    
   }
 }

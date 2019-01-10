@@ -9,8 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isPlayingMusic: false
-    // collect_status
+    isPlayingMusic: false,
+    collect_status: false
     // postId
     // data_
   },
@@ -148,14 +148,16 @@ Page({
       data_: postData_
     });
 
-    let collects = wx.getStorageSync('collect'); // 1.获取所有收藏数组 collect: [false, false, false]
+    let collects = wx.getStorageSync('collect'); // 1.获取所有收藏数组 collect: [false, false, false, ...]
     if (collects) {
       // 2.如果非空，拿当前详情页的收藏状态
-      var collect = collects[postId];
+      let collect = collects[postId];
       if (collect == undefined) {
         collects[postId] = false;
+        collect = false;
         wx.setStorageSync('collect', collects);
       }
+      console.log(collect);
       this.setData({
         collect_status: collect
       });
@@ -168,12 +170,20 @@ Page({
     }
     // 背景音乐监听
     if (app.globalData.globalIsPlayingMusic && app.globalData.globalCurrentMusicPostId === postId) {
-      console.log('监听音乐当前', );
       this.setData({
         isPlayingMusic: true
       });
     }
     this.setMusicMonitor();
+    // 设置浏览缓存
+    let views = wx.getStorageSync('postView');
+    if (views) {
+      let view = views[postId];
+      view = ++view;
+      views[postId] = view;
+      wx.setStorageSync('postView', views);
+
+    }
   },
 
   /**

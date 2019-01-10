@@ -8,7 +8,7 @@ let reading_data = [
     post_content: '天才、有罪的少年，美与邪恶的混合体，几代大师膜拜的偶像，留给世人的唯一一部奇书中的奇书...',
     comment: 6,
     comment_icon: '/img/icon/chat.png',
-    looked: 89,
+    // looked: 89,
     looked_icon: '/img/icon/view.png',
     detail: {
       bannerImg: '/img/post/1.png',
@@ -32,7 +32,7 @@ let reading_data = [
     post_content: '“我的整个生命，只是一场为了提升社会地位的低俗斗争。”《失踪的孩子》是“那不勒斯四部曲”的第四部，小说聚焦了莉拉和埃莱娜（“我”）的壮年和晚年，为她们持续了五十多年的友谊划上了一个令人心碎的句号。',
     comment: 18,
     comment_icon: '/img/icon/chat.png',
-    looked: 135,
+    // looked: 135,
     looked_icon: '/img/icon/view.png',
     detail: {
       bannerImg: '/img/post/2.png',
@@ -56,7 +56,7 @@ let reading_data = [
     post_content: '我下楼拿作文给李老师改。他掏出来，我被逼到涂在墙上。老师说了九个字：“不行的话，嘴巴可以吧。”我说了五个字：“不行，我不会。”他就塞进来。那感觉像溺水。可以说话之后，我对老师说：“对不起。”有一种功课做不好的感觉。',
     comment: 18,
     comment_icon: '/img/icon/chat.png',
-    looked: 135,
+    // looked: 135,
     looked_icon: '/img/icon/view.png',
     detail: {
       bannerImg: '/img/post/4.png',
@@ -80,7 +80,7 @@ let reading_data = [
     post_content: '12月12日，腾讯召开一年一度的员工大会。在CEO马化腾、总裁刘炽平、COO任宇昕之后，微信事业群总裁张小龙也照例进行了一次主题为“套路”的演讲。',
     comment: 33,
     comment_icon: '/img/icon/chat.png',
-    looked: 133,
+    // looked: 133,
     looked_icon: '/img/icon/view.png',
     detail: {
       bannerImg: '/img/post/6.jpg',
@@ -104,7 +104,7 @@ let reading_data = [
     post_content: '利用图片和文字展示信息已经完全不能满足用户的需求。',
     comment: 44,
     comment_icon: '/img/icon/chat.png',
-    looked: 144,
+    // looked: 144,
     looked_icon: '/img/icon/view.png',
     detail: {
       bannerImg: '/img/vr.png',
@@ -137,7 +137,7 @@ let reading_data = [
     post_content: '1月13日起，用户发现罗辑思维主推的一款知识服务产品“得到plus”暂停了小程序，用户超1000万的罗辑思维撤退了。',
     comment: 55,
     comment_icon: '/img/icon/chat.png',
-    looked: 155,
+    // looked: 155,
     looked_icon: '/img/icon/view.png',
     detail: {
       bannerImg: '/img/wx.png',
