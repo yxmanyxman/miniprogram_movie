@@ -1,8 +1,8 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/reading/reading",    
-    "pages/movie/movie",
+    "pages/reading/reading",
+    "pages/movies/movies",
     "pages/logs/logs",
     "pages/contact/contact",
     "pages/reading/reading-detail/reading-detail"
@@ -19,7 +19,7 @@
         "text": "阅读"
       },
       {
-        "pagePath": "pages/movie/movie",
+        "pagePath": "pages/movies/movies",
         "iconPath": "img/tab/dianying.png",
         "selectedIconPath": "img/tab/dianying_hl.png",
         "text": "电影"
@@ -38,10 +38,10 @@
       }
     ]
   },
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#405f80",
     "navigationBarTitleText": "文章电影推荐",
-    "navigationBarTextStyle":"#fff"
+    "navigationBarTextStyle": "#fff"
   }
 }
