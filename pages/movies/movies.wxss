@@ -1,1 +1,4 @@
 @import 'movie-list/movie-list.wxss';
+.movies-container {
+  background-color: #f2f2f2;
+}

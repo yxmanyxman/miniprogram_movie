@@ -21,8 +21,6 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-              console.log('用户数据：',res.userInfo);
-
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -38,6 +36,7 @@ App({
     userInfo: null,
     globalIsPlayingMusic: false,
     globalCurrentMusicPostId: null,
-    globalView: 0
+    movieApi: "https://api-m.mtime.cn/",
+    doubanApi: "https://api.douban.com/v2/movie/"
   }
 })

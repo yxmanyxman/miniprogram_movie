@@ -42,7 +42,6 @@ Page({
     this.setData({
       postData: postD
     });
-    console.log(this.data.postData);
   },
 
   // 跳转到文章详情页

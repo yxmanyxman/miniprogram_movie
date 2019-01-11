@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 30rpx;
 }
 .movie-list-subcontainer {
   margin: 0 auto 20rpx;
@@ -13,7 +14,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 60rpx;
+  height: 80rpx;
   padding: 0 22rpx;
 }
 .movie-list-title {

@@ -11,4 +11,5 @@
 text {
   font-size: 24rpx;
   font-family: MicroSoft Yahei;
+  color: #666;
 }
