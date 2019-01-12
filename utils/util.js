@@ -14,6 +14,38 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+function StarArray(stars) {
+  // 5星数据拆分组织成一个长度为5的数组，如4星:[1,1,1,1,0]
+  var num = Math.round(stars);
+  let array = [];
+  for (let i = 1; i <= 5; i++) {
+    if (i <= num) {
+      array.push(1);
+    } else {
+      array.push(0);
+    }
+  }
+  return array;
+}
+
+function http(url, callback, method) {
+  wx.request({
+    url: url,
+    method: method,
+    header: {
+      'content-type': 'application/json'
+    },
+    success(res) {
+      callback(res.data);
+    },
+    fail(err) {
+      console.log(err);
+    }
+  })
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  starArray: StarArray,
+  http: http
 }

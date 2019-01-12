@@ -1,0 +1,11 @@
+@import '../movie/movie-template.wxss';
+.more-grid-container {
+  display: block;
+  margin: 30rpx auto;
+  text-align: center;
+  height: 1300rpx;
+}
+.single-more-container {
+  display: inline-flex;
+  margin-bottom: 30rpx;
+}

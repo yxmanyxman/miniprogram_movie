@@ -1,56 +1,36 @@
-// pages/movies/movies.js
 const app = getApp();
-const utils = require('../../utils/util.js');
+const utils = require('../../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    movies: {}
+    // type
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    const inTheatersUrl = app.globalData.movieApi + "Showtime/LocationMovies.api?locationId=366";
-    const comingSoonUrl = app.globalData.movieApi + "Movie/MovieComingNew.api?locationId=366";
-    const sellingUrl = app.globalData.movieApi + "PageSubArea/HotPlayMovies.api?locationId=366";
-    this.getMovieIndexData(inTheatersUrl, 'intheater');
-    this.getMovieIndexData(comingSoonUrl, 'comingsoon');
-    this.getMovieIndexData(sellingUrl, 'selling');
-  },
-
-  getMovieIndexData: function(url, type) {
-    const that = this;
-    wx.request({
-      url: url,
-      method: 'GET',
-      header: {
-        'content-type': 'application/json'
-      },
-      success(res) {
-        that.handleMoviesData(res.data, type);
-      },
-      fail(err) {
-        console.log(err);
-      }
-    })
-  },
-
-  handleMoviesData: function(data, type) {
-    let resData = [];
-    if (type === 'intheater') {
-      resData = data.ms;
-    } else if (type === 'comingsoon') {
-      resData = data.moviecomings;
+    let type = options.type;
+    this.data.type = type;
+    let url = '';
+    if (type === '正在热映') {
+      url = app.globalData.movieApi + "Showtime/LocationMovies.api?locationId=366";
+    } else if (type === '即将上映') {
+      url = app.globalData.movieApi + "Movie/MovieComingNew.api?locationId=366";
     } else {
-      resData = data.movies;
+      url = app.globalData.movieApi + "PageSubArea/HotPlayMovies.api?locationId=366"
     }
-    resData.length = 3;
+    utils.http(url, this.getMoreData, 'GET');
+  },
 
-    // 组织首页所需数据
+  getMoreData: function(data) {
+    console.log(data);
+    let resData = [];
+    let type = this.data.type;
     let movies = [];
     let movie = {
       title: '',
@@ -58,10 +38,20 @@ Page({
       movieid: '',
       average: ''
     };
-
+    switch (type) {
+      case '正在热映':
+        resData = data.ms;
+        break;
+      case '即将上映':
+        resData = data.moviecomings;
+        break;
+      case '正在售票':
+        resData = data.movies;
+        break;
+    }
     for (var idx in resData) {
       const subject = resData[idx];
-      if (type === 'intheater') {
+      if (type === '正在热映') {
         movie = {
           title: subject.tCn,
           coverimg: subject.img,
@@ -69,7 +59,7 @@ Page({
           average: subject.r > 0 ? subject.r : 0,
           star: utils.starArray(5 * (subject.r > 0 ? subject.r : 0) / 10)
         }
-      } else if (type === 'comingsoon') {
+      } else if (type === '即将上映') {
         movie = {
           title: subject.title,
           coverimg: subject.image,
@@ -92,34 +82,28 @@ Page({
       }
       movies.push(movie);
     }
-    var readyData = {};
-    readyData[type] = {
-      movies: movies,
-      type: type === 'intheater' ? '正在热映' : type === 'comingsoon' ? '即将上映' : '正在售票'
-    };
-    this.setData(readyData);
+    this.setData({
+      movies: movies
+    });
   },
 
-  gotoMore: function(e) {
-    const type = e.currentTarget.dataset.type;
-    wx.navigateTo({
-      url: 'more/more?type=' + type
-    })
+  scrollLoadMore: function(e){
+    console.log('加载更多');
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    wx.setNavigationBarTitle({
+      title: this.data.type,
+    });
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-
-  },
+  onShow: function() {},
 
   /**
    * 生命周期函数--监听页面隐藏

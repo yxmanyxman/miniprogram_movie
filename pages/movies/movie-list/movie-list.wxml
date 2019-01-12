@@ -4,7 +4,7 @@
     <view class='movie-list-subcontainer'>
       <view class='movie-list-bar'>
         <text class='movie-list-title'>{{type}}</text>
-        <view class='movie-more'>
+        <view class='movie-more' catchtap='gotoMore' data-type='{{type}}'>
           <text class='more-text'>更多</text>
           <image src="/img/icon/arrow-right.png" class='more-img'></image>
         </view>
