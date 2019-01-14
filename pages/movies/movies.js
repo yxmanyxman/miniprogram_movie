@@ -14,9 +14,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    const inTheatersUrl = app.globalData.movieApi + "Showtime/LocationMovies.api?locationId=366";
-    const comingSoonUrl = app.globalData.movieApi + "Movie/MovieComingNew.api?locationId=366";
-    const sellingUrl = app.globalData.movieApi + "PageSubArea/HotPlayMovies.api?locationId=366";
+    const inTheatersUrl = app.globalData.doubanApi + "in_theaters" + "?start=0&count=3";
+    const comingSoonUrl = app.globalData.doubanApi + "coming_soon" + "?start=0&count=3";
+    const sellingUrl = app.globalData.doubanApi + "top250" + "?start=0&count=3";
     this.getMovieIndexData(inTheatersUrl, 'intheater');
     this.getMovieIndexData(comingSoonUrl, 'comingsoon');
     this.getMovieIndexData(sellingUrl, 'selling');
@@ -40,62 +40,28 @@ Page({
   },
 
   handleMoviesData: function(data, type) {
-    let resData = [];
-    if (type === 'intheater') {
-      resData = data.ms;
-    } else if (type === 'comingsoon') {
-      resData = data.moviecomings;
-    } else {
-      resData = data.movies;
-    }
-    resData.length = 3;
-
+    let resData = data.subjects;
     // 组织首页所需数据
     let movies = [];
-    let movie = {
-      title: '',
-      coverimg: '',
-      movieid: '',
-      average: ''
-    };
-
     for (var idx in resData) {
       const subject = resData[idx];
-      if (type === 'intheater') {
-        movie = {
-          title: subject.tCn,
-          coverimg: subject.img,
-          movieid: subject.id,
-          average: subject.r > 0 ? subject.r : 0,
-          star: utils.starArray(5 * (subject.r > 0 ? subject.r : 0) / 10)
-        }
-      } else if (type === 'comingsoon') {
-        movie = {
-          title: subject.title,
-          coverimg: subject.image,
-          movieid: subject.id,
-          average: subject.r ? subject.r : 0,
-          star: utils.starArray(5 * (subject.r ? subject.r : 0) / 10)
-        }
-      } else {
-        movie = {
-          title: subject.titleCn,
-          coverimg: subject.img,
-          movieid: subject.movieId,
-          average: subject.ratingFinal > 0 ? subject.ratingFinal : 0,
-          star: utils.starArray(5 * (subject.ratingFinal > 0 ? subject.ratingFinal : 0) / 10)
-        }
+      let title = subject.title;
+      if (title.length >= 6) {
+        title = title.substring(0, 6) + '...';
       }
-      if (movie.title.length >= 6) {
-        let title = movie.title.substring(0, 6) + '...';
-        movie.title = title;
+      let movie = {
+        star: utils.starArray(5*subject.rating.average/10),
+        title: title,
+        average: subject.rating.average,
+        coverimg: subject.images.large,
+        movieid: subject.id
       }
       movies.push(movie);
     }
     var readyData = {};
     readyData[type] = {
       movies: movies,
-      type: type === 'intheater' ? '正在热映' : type === 'comingsoon' ? '即将上映' : '正在售票'
+      type: type === 'intheater' ? '正在热映' : type === 'comingsoon' ? '即将上映' : 'Top250'
     };
     this.setData(readyData);
   },

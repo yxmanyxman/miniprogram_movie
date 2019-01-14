@@ -6,7 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    movies: {}
+    movies: {},
+    requestUrl: "",
+    totalCount: 0,
+    isEmpty: true,
     // type
   },
 
@@ -16,79 +19,57 @@ Page({
   onLoad: function(options) {
     let type = options.type;
     this.data.type = type;
-    let url = '';
-    if (type === '正在热映') {
-      url = app.globalData.movieApi + "Showtime/LocationMovies.api?locationId=366";
-    } else if (type === '即将上映') {
-      url = app.globalData.movieApi + "Movie/MovieComingNew.api?locationId=366";
-    } else {
-      url = app.globalData.movieApi + "PageSubArea/HotPlayMovies.api?locationId=366"
-    }
+    let url = this.chooseType(type);
     utils.http(url, this.getMoreData, 'GET');
+  },
+
+  chooseType(tp) {
+    let url = '',
+      type = tp;
+    if (type === '正在热映') {
+      // url = app.globalData.doubanApi + "Showtime/LocationMovies.api?locationId=366";
+      url = app.globalData.doubanApi + "in_theaters";
+    } else if (type === '即将上映') {
+      url = app.globalData.doubanApi + "coming_soon";
+    } else {
+      url = app.globalData.doubanApi + "top250"
+    }
+    this.data.requestUrl = url;
+    return url;
   },
 
   getMoreData: function(data) {
     console.log(data);
-    let resData = [];
-    let type = this.data.type;
+    let resData = data.subjects;
     let movies = [];
-    let movie = {
-      title: '',
-      coverimg: '',
-      movieid: '',
-      average: ''
-    };
-    switch (type) {
-      case '正在热映':
-        resData = data.ms;
-        break;
-      case '即将上映':
-        resData = data.moviecomings;
-        break;
-      case '正在售票':
-        resData = data.movies;
-        break;
-    }
     for (var idx in resData) {
       const subject = resData[idx];
-      if (type === '正在热映') {
-        movie = {
-          title: subject.tCn,
-          coverimg: subject.img,
-          movieid: subject.id,
-          average: subject.r > 0 ? subject.r : 0,
-          star: utils.starArray(5 * (subject.r > 0 ? subject.r : 0) / 10)
-        }
-      } else if (type === '即将上映') {
-        movie = {
-          title: subject.title,
-          coverimg: subject.image,
-          movieid: subject.id,
-          average: subject.r ? subject.r : 0,
-          star: utils.starArray(5 * (subject.r ? subject.r : 0) / 10)
-        }
-      } else {
-        movie = {
-          title: subject.titleCn,
-          coverimg: subject.img,
-          movieid: subject.movieId,
-          average: subject.ratingFinal > 0 ? subject.ratingFinal : 0,
-          star: utils.starArray(5 * (subject.ratingFinal > 0 ? subject.ratingFinal : 0) / 10)
-        }
+      let title = subject.title;
+      if (title.length >= 6) {
+        title = title.substring(0, 6) + '...';
       }
-      if (movie.title.length >= 6) {
-        let title = movie.title.substring(0, 6) + '...';
-        movie.title = title;
+      let movie = {
+        star: utils.starArray(5 * subject.rating.average / 10),
+        title: title,
+        average: subject.rating.average,
+        coverimg: subject.images.large,
+        movieid: subject.id
       }
       movies.push(movie);
     }
+    let totalMovies = {};
+    totalMovies = this.data.movies.concat(movies);
     this.setData({
-      movies: movies
+      movies: totalMovies
     });
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   },
 
-  scrollLoadMore: function(e){
+  scrollLoadMore: function(e) {
     console.log('加载更多');
+    let nextUrl = this.data.requestUrl + '?start=' + this.data.totalCount + '&count=20';
+    utils.http(nextUrl, this.getMoreData, 'GET');
   },
 
   /**
@@ -123,7 +104,12 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    console.log('下拉刷新');
+    // let that = this;
+    let url = '';
+    wx.showNavigationBarLoading();
+    url = this.chooseType(this.data.type);
+    utils.http(url, this.getMoreData, 'GET');
   },
 
   /**
