@@ -123,6 +123,7 @@ Page({
     wx.showNavigationBarLoading();
     this.data.movies = {};
     this.data.isEmpty = true;
+    this.data.totalCount = 0;
     url = this.chooseType(this.data.type) + '?star=0&count=20';
     utils.http(url, this.getMoreData, 'GET');
   },

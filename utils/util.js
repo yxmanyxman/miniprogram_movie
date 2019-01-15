@@ -44,8 +44,30 @@ function http(url, callback, method) {
   })
 }
 
+function converToCast(casts) {
+  let new_cast = '';
+  for (let idx in casts) {
+    new_cast = casts[idx].name + '/';
+  }
+  return new_cast.substring(0, new_cast.length - 2);
+}
+
+function converToCastInfo(casts) {
+  let castArray = [];
+  for (let idx in casts) {
+    let cast = {
+      img: casts[idx].avatars ? casts[idx].avatars.large : "",
+      name: casts[idx].name
+    }
+    castArray.push(cast);
+  }
+  return castArray;
+}
+
 module.exports = {
   formatTime: formatTime,
   starArray: StarArray,
-  http: http
+  http: http,
+  converToCast: converToCast,
+  converToCastInfo: converToCastInfo
 }

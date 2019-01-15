@@ -1,1 +1,9 @@
-/* pages/movies/movie-detail/movie-detail.wxss */
+@import '../star-template/star-template.wxss';
+.container{
+  display: flex;
+  flex-direction: column;
+}
+.head-img{
+  width: 100%;
+  height: 320rpx;
+}

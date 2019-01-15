@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    movie: {}
   },
 
   /**
@@ -15,13 +15,43 @@ Page({
   onLoad: function (options) {
     const id = options.id;
     let url = app.globalData.doubanApi + 'subject/' + id;
-    utils.http(url, this.getMovieDetail,'GET');
+    utils.http(url, this.getMovieDetail, 'GET');
   },
   /**
    * 获取电影详情数据
    */
-  getMovieDetail: function(data){
-    console.log('详情数据:',data);
+  getMovieDetail: function (data) {
+    console.log('详情数据:', data);
+    let director = {
+      avater: '',
+      name: ''
+    };
+    const dataDirector = data.directors;
+    if (dataDirector[0] !== null) {
+      if (dataDirector[0].avatars != null) {
+        director.avater = dataDirector[0].avatars.large
+      }
+      director.name = dataDirector[0].name;
+    }
+    let movie = {
+      movieImg: data.images ? data.images.large : '',
+      country: data.countries[0],
+      title: data.title,
+      originalTitle: data.original_title,
+      wishCount: data.wish_count,
+      commentCount: data.comments_count,
+      year: data.year,
+      genres: data.genres.join('、'),
+      star: utils.starArray(data.rating.average * 5 / 10),
+      score: data.rating.average,
+      direactor: director,
+      casts: utils.converToCast(data.casts),
+      castInfo: utils.converToCastInfo(data.casts),
+      summary: data.summary
+    }
+    this.setData({
+      movie: movie
+    });
   },
 
   /**
