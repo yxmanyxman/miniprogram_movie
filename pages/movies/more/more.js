@@ -41,35 +41,49 @@ Page({
   getMoreData: function(data) {
     console.log(data);
     let resData = data.subjects;
-    let movies = [];
-    for (var idx in resData) {
-      const subject = resData[idx];
-      let title = subject.title;
-      if (title.length >= 6) {
-        title = title.substring(0, 6) + '...';
+    if (resData.length === 0) {
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();
+      return;
+    } else {
+      let movies = [];
+      for (var idx in resData) {
+        const subject = resData[idx];
+        let title = subject.title;
+        if (title.length >= 6) {
+          title = title.substring(0, 6) + '...';
+        }
+        let movie = {
+          star: utils.starArray(5 * subject.rating.average / 10),
+          title: title,
+          average: subject.rating.average,
+          coverimg: subject.images.large,
+          movieid: subject.id
+        }
+        movies.push(movie);
       }
-      let movie = {
-        star: utils.starArray(5 * subject.rating.average / 10),
-        title: title,
-        average: subject.rating.average,
-        coverimg: subject.images.large,
-        movieid: subject.id
+      let totalMovies = {};
+      if (!this.data.isEmpty) {
+        totalMovies = this.data.movies.concat(movies);
+      } else {
+        totalMovies = movies;
+        this.data.isEmpty = false;
       }
-      movies.push(movie);
+      this.setData({
+        movies: totalMovies
+      });
+      this.data.totalCount += 20;
     }
-    let totalMovies = {};
-    totalMovies = this.data.movies.concat(movies);
-    this.setData({
-      movies: totalMovies
-    });
+
     wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh();
   },
 
   scrollLoadMore: function(e) {
-    console.log('加载更多');
     let nextUrl = this.data.requestUrl + '?start=' + this.data.totalCount + '&count=20';
+    // console.log('加载更多', nextUrl);
     utils.http(nextUrl, this.getMoreData, 'GET');
+    wx.showNavigationBarLoading();
   },
 
   /**
@@ -104,11 +118,12 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-    console.log('下拉刷新');
-    // let that = this;
+    // console.log('下拉刷新');
     let url = '';
     wx.showNavigationBarLoading();
-    url = this.chooseType(this.data.type);
+    this.data.movies = {};
+    this.data.isEmpty = true;
+    url = this.chooseType(this.data.type) + '?star=0&count=20';
     utils.http(url, this.getMoreData, 'GET');
   },
 
