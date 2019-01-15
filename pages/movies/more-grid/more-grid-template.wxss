@@ -1,11 +1,12 @@
 @import '../movie/movie-template.wxss';
 .more-grid-container {
   display: block;
-  margin: 30rpx auto;
-  text-align: center;
+  margin: 30rpx 10rpx;
+  /* text-align: center; */
   height: 1300rpx;
 }
 .single-more-container {
-  display: inline-flex;
+  /* display: inline-flex; */
+  float: left;
   margin-bottom: 30rpx;
 }

@@ -6,7 +6,8 @@
     "pages/logs/logs",
     "pages/contact/contact",
     "pages/reading/reading-detail/reading-detail",
-    "pages/movies/more/more"
+    "pages/movies/more/more",
+    "pages/movies/movie-detail/movie-detail"
   ],
   "tabBar": {
     "color": "#ddd",

@@ -1,4 +1,3 @@
-// pages/movies/movies.js
 const app = getApp();
 const utils = require('../../utils/util.js');
 Page({
@@ -7,7 +6,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    intheater: {},
+    comingsoon: {},
+    selling: {},
+    showSearchPanel: false,
+    showMoviesPanel: true,
+    searchReasult: {},
+    inputValue: ''
   },
 
   /**
@@ -21,7 +26,9 @@ Page({
     this.getMovieIndexData(comingSoonUrl, 'comingsoon');
     this.getMovieIndexData(sellingUrl, 'selling');
   },
-
+  /**
+   * 请求电影数据--get
+   */
   getMovieIndexData: function(url, type) {
     const that = this;
     wx.request({
@@ -39,6 +46,9 @@ Page({
     })
   },
 
+  /**
+   * 请求电影数据成功--处理电影数据
+   */
   handleMoviesData: function(data, type) {
     let resData = data.subjects;
     // 组织首页所需数据
@@ -50,7 +60,7 @@ Page({
         title = title.substring(0, 6) + '...';
       }
       let movie = {
-        star: utils.starArray(5*subject.rating.average/10),
+        star: utils.starArray(5 * subject.rating.average / 10),
         title: title,
         average: subject.rating.average,
         coverimg: subject.images.large,
@@ -61,16 +71,60 @@ Page({
     var readyData = {};
     readyData[type] = {
       movies: movies,
-      type: type === 'intheater' ? '正在热映' : type === 'comingsoon' ? '即将上映' : 'Top250'
+      type: type === 'intheater' ? '正在热映' : type === 'comingsoon' ? '即将上映' : type === 'top250' ? 'Top250' : '搜索结果'
     };
     this.setData(readyData);
   },
 
+  /**
+   * 跳转至更多
+   */
   gotoMore: function(e) {
     const type = e.currentTarget.dataset.type;
     wx.navigateTo({
       url: 'more/more?type=' + type
     })
+  },
+
+  /**
+   * 跳转至电影详情页
+   */
+  gotoMovieDetail: function(e) {
+    const id = e.currentTarget.dataset.movieid;
+    wx.navigateTo({
+      url: 'movie-detail/movie-detail?id=' + id
+    })
+  },
+
+  /**
+   * 搜索聚焦
+   */
+  onBindFocus: function(event) {
+    this.setData({
+      showSearchPanel: true,
+      showMoviesPanel: false
+    });
+  },
+
+  /**
+   * 搜索失焦
+   */
+  onBindBlur: function(event) {
+    let value = event.detail.value;
+    let searchUrl = app.globalData.doubanApi + "search?q=" + value;
+    this.getMovieIndexData(searchUrl, 'searchReasult');
+  },
+
+  /**
+   * 搜索取消
+   */
+  onCancel: function() {
+    this.setData({
+      showSearchPanel: false,
+      showMoviesPanel: true,
+      inputValue: '',
+      searchReasult: {} // 清空上次搜索结果
+    });
   },
 
   /**
@@ -98,20 +152,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
 
   },
 

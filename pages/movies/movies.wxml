@@ -1,6 +1,15 @@
 <import src="movie-list/movie-list.wxml" />
-<view class='movies-container'>
+<import src="more-grid/more-grid-template.wxml"/>
+<view class='search'>
+  <icon type='search' class='search-img' size='13' color='#405f80'></icon>
+  <input type='text' placeholder='你的名字' placeholder-class='placeholder' value='{{inputValue}}' bindfocus='onBindFocus' bindblur='onBindBlur'></input>
+  <icon type='clear' class='cancel-img' size='16' color='#405f80' bindtap='onCancel' wx:if="{{showSearchPanel}}"></icon>
+</view>
+<view class='movies-container' wx:if="{{showMoviesPanel}}">
   <template is="movieListTemplate" data="{{...intheater}}"></template>
   <template is="movieListTemplate" data="{{...comingsoon}}"></template>
   <template is="movieListTemplate" data="{{...selling}}"></template>
+</view>
+<view class='search-container' wx:if="{{showSearchPanel}}">
+  <template is="moreGridTemplate" data="{{...searchReasult}}"/>
 </view>

@@ -134,6 +134,14 @@ Page({
       app.globalData.globalIsPlayingMusic = false;
       app.globalData.globalCurrentMusicPostId = null;
     });
+
+    bgAudioManager.onStop(function () {
+      that.setData({
+        isPlayingMusic: false
+      });
+      app.globalData.globalIsPlayingMusic = false;
+      app.globalData.globalCurrentMusicPostId = null;
+    });
   },
 
   /**
