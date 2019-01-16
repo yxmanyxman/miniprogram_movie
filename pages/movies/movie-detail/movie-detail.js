@@ -21,7 +21,7 @@ Page({
    * 获取电影详情数据
    */
   getMovieDetail: function (data) {
-    console.log('详情数据:', data);
+    // console.log('详情数据:', data);
     let director = {
       avater: '',
       name: ''

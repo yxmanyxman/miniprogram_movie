@@ -37,6 +37,6 @@ App({
     globalIsPlayingMusic: false,
     globalCurrentMusicPostId: null,
     movieApi: "https://api-m.mtime.cn/",
-    doubanApi: "http://t.yushu.im/v2/movie/"
+    doubanApi: "https://t.yushu.im/v2/movie/"
   }
 })
