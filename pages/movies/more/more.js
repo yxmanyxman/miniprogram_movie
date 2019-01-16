@@ -87,6 +87,16 @@ Page({
   },
 
   /**
+   * 跳转至电影详情页
+   */
+  gotoMovieDetail: function(e) {
+    const id = e.currentTarget.dataset.movieid;
+    wx.navigateTo({
+      url: '../movie-detail/movie-detail?id=' + id
+    })
+  },
+
+  /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {

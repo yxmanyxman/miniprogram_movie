@@ -1,5 +1,5 @@
 <import src="../star-template/star-template.wxml" />
-<view class='container'>
+<view class='movie-detail-container'>
   <image class='head-img' src="{{movie.movieImg}}" mode='aspectFill'></image>
   <view class='head-img-hover' data-src='{{movie.movieImg}}' catchtap='viewMovieImg'>
     <text class='main-title'>{{movie.title}}</text>
@@ -25,7 +25,7 @@
       <text>{{movie.director.name}}</text>
     </view>
     <view class='flex-row'>
-      <text class='mark'>影人</text>
+      <text class='mark'>主演</text>
       <text>{{movie.casts}}</text>
     </view>
     <view class='flex-row'>
@@ -35,14 +35,14 @@
   </view>
   <view class='hr'></view>
   <view class='synopsis'>
-    <text>剧情简介</text>
+    <text class='synopsis-font'>剧情简介</text>
     <text class='summary-content'>{{movie.summary}}</text>
   </view>
   <view class='hr'></view>
   <view class='cast'>
-    <text style='margin-bottom:40rpx;'>影人</text>
+    <text class='cast-font'>主演</text>
     <scroll-view class='cast-imgs' scroll-x="true" style='width:100%'>
-      <block wx:for="{{movie.castInfo}}">
+      <block wx:for="{{movie.castInfo}}" wx:key="{{index}}">
         <view class='cast-container'>
           <image class='cast-img' src='{{item.img}}'></image>
           <text class='cast-name'>{{item.name}}</text>

@@ -44,7 +44,7 @@ Page({
       genres: data.genres.join('、'),
       star: utils.starArray(data.rating.average * 5 / 10),
       score: data.rating.average,
-      direactor: director,
+      director: director,
       casts: utils.converToCast(data.casts),
       castInfo: utils.converToCastInfo(data.casts),
       summary: data.summary
@@ -52,6 +52,14 @@ Page({
     this.setData({
       movie: movie
     });
+  },
+
+  viewMovieImg: function(e){
+    const src = e.currentTarget.dataset.src;
+    wx.previewImage({
+      urls: [src],
+      current: src
+    })
   },
 
   /**
